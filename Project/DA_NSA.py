@@ -13,8 +13,4 @@ df = df.rename(columns={'' : 'Date'})
 #Convert Year-Month dates to an actual datetime
 df['Date'] = pd.to_datetime(df['Date'])
 
-Europe = ["United Kingdom", "Germany", "France", "Italy", "Netherlands", "Greece", "Belgium & Luxemburg", "Switzerland", "Austria"]
-
-test
 print(df)
-print(Europe)
