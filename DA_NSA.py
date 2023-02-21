@@ -13,7 +13,6 @@ df = df.rename(columns={'' : 'Date'})
 #Convert Year-Month dates to an actual datetime
 df['Date'] = pd.to_datetime(df['Date'])
 
-print(df.columns)
 class RegionPeriod :
     def __init__(self, region, period):
         self.region = region
@@ -34,7 +33,7 @@ class RegionPeriod :
             print('End')
 
         if self.period == "4":
-            time_period = region_df[region_df['Date'].between('2008-01-01', '2018-12-31')]
+            time_period = region_df[region_df['Date'].between('2008-01-01', '2017-12-31')]
             #print(time_period)
         elif self.period == "3":
             time_period = region_df[region_df['Date'].between('1998-01-01', '2007-12-31')]
@@ -45,23 +44,34 @@ class RegionPeriod :
         else:
             print("End")
 
-#asks for input of region and period of time wanted
-region = input("Regions available: Asia, Europe, Others\n"
-               "Insert region needed : ").lower()
-period = input("\nPeriods available:\n"
-               "1 = 1978-1987\n"
-               "2 = 1988-1997\n"
-               "3 = 1998-2007\n"
-               "4 = 2008-2017\n"
-                "Insert period needed : \n")
 
-#calls the function insided the class
-RegionPeriod(region, period).Region()
+#calls the function inside the class
+#selects europe region and time period of 2008 to 2017
+RegionPeriod("europe", "4").Region()
 
-#prints the final df
+#prints the final df for testing
 final_df = time_period
-print(final_df)
+#print(final_df)
 
-#stuck here
-#group = final_df.groupby(final_df['Date'].dt.year)
-#print(group.describe())
+
+#finds the total sum of visitors throughout the 10 years from 2008 to 2017 and sorts descending
+totalvisitors10yrs = final_df.sum().sort_values(ascending=False)
+#print(totalvisitors10yrs)
+
+#plots the bar chart
+ax = totalvisitors10yrs.plot(kind = 'bar')
+
+plt.title('Top 3 countries in Europe over a span of 10 years from 2008 to 2017.')
+plt.xlabel('Countries')
+plt.ylabel('Total Visitors')
+
+#formats the plot to show grid, adjusting the rotation of x value labels and tightens the plot into a smaller size
+#to show the xlabels and ylabels
+plt.grid()
+plt.xticks(rotation = 25)
+plt.ticklabel_format(axis="y", style='plain')
+ax.bar_label(ax.containers[0], label_type='edge', fmt = '%d')
+plt.tight_layout()
+
+#shows the bar plot
+plt.show()
