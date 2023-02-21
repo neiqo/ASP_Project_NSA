@@ -21,13 +21,13 @@ class RegionPeriod :
 # loops through the input to select the region and period of time wanted
     def Region(self):
         global region_df, time_period
-        if self.region == "europe":
+        if self.region.lower() == "europe":
             region_df = df[["Date", "United Kingdom", "France", "Germany", "Italy", "Netherlands", "Greece", "Belgium & Luxembourg", "Switzerland",
                             "Austria", "Scandinavia", "CIS & Eastern Europe"]]
-        elif self.region == "asia":
+        elif self.region.lower() == "asia":
             region_df = df[['Date', 'Brunei Darussalam', 'Indonesia', 'Malaysia', 'Philippines','Thailand', 'Viet Nam', 'Myanmar', 'Japan', 'Hong Kong', 'China',
                             'Taiwan', 'Korea, Republic Of', 'India', 'Pakistan', 'Sri Lanka', 'Saudi Arabia', 'Kuwait', 'UAE']]
-        elif self.region == "others":
+        elif self.region.lower() == "others":
             region_df = df[['Date', 'USA', 'Canada','Australia', 'New Zealand', 'Africa']]
         else:
             print('End')
@@ -47,7 +47,7 @@ class RegionPeriod :
 
 #calls the function inside the class
 #selects europe region and time period of 2008 to 2017
-RegionPeriod("europe", "4").Region()
+RegionPeriod("Europe", "4").Region()
 
 #prints the final df for testing
 final_df = time_period
