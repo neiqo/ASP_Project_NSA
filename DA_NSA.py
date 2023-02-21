@@ -55,19 +55,20 @@ final_df = time_period
 
 
 #finds the total sum of visitors throughout the 10 years from 2008 to 2017 and sorts descending
-totalvisitors10yrs = final_df.sum().sort_values(ascending=False)
-#print(totalvisitors10yrs)
+totalvisitors_series = final_df.sum().sort_values(ascending=False)
+totalvisitors_df = pd.DataFrame({'Countries':totalvisitors_series.index, 'Total Visitors':totalvisitors_series.values})
+totalvisitors_top3_df = totalvisitors_df[0:3]
+print(totalvisitors_top3_df)
 
 #plots the bar chart
-ax = totalvisitors10yrs.plot(kind = 'bar')
+ax = totalvisitors_top3_df.plot(x = 'Countries',y = 'Total Visitors',kind = 'bar')
 
 plt.title('Top 3 countries in Europe over a span of 10 years from 2008 to 2017.')
 plt.xlabel('Countries')
 plt.ylabel('Total Visitors')
 
-#formats the plot to show grid, adjusting the rotation of x value labels and tightens the plot into a smaller size
+#formats the plot to adjust the rotation of x value labels and tightens the plot into a smaller size
 #to show the xlabels and ylabelss
-plt.grid()
 plt.xticks(rotation = 25)
 plt.ticklabel_format(axis="y", style='plain')
 ax.bar_label(ax.containers[0], label_type='edge', fmt = '%d')
