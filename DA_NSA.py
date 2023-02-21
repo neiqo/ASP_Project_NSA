@@ -66,7 +66,7 @@ plt.xlabel('Countries')
 plt.ylabel('Total Visitors')
 
 #formats the plot to show grid, adjusting the rotation of x value labels and tightens the plot into a smaller size
-#to show the xlabels and ylabels
+#to show the xlabels and ylabelss
 plt.grid()
 plt.xticks(rotation = 25)
 plt.ticklabel_format(axis="y", style='plain')
