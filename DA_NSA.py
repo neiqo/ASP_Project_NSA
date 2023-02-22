@@ -57,8 +57,7 @@ final_df = time_period
 #finds the total sum of visitors throughout the 10 years from 2008 to 2017 and sorts descending
 totalvisitors_series = final_df.sum().sort_values(ascending=False)
 totalvisitors_df = pd.DataFrame({'Countries':totalvisitors_series.index, 'Total Visitors':totalvisitors_series.values})
-totalvisitors_top3_df = totalvisitors_df[0:3]
-print(totalvisitors_top3_df)
+totalvisitors_top3_df = totalvisitors_df[:3]
 
 #plots the bar chart
 ax = totalvisitors_top3_df.plot(x = 'Countries',y = 'Total Visitors',kind = 'bar')
@@ -74,5 +73,6 @@ plt.ticklabel_format(axis="y", style='plain')
 ax.bar_label(ax.containers[0], label_type='edge', fmt = '%d')
 plt.tight_layout()
 
-#shows the bar plot
+#shows the bar plot and prints the top 3 countries
+print(totalvisitors_top3_df)
 plt.show()
