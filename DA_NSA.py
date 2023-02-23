@@ -1,10 +1,8 @@
-
-
 #import necessary libraries needed
 import numpy as np, pandas as pd, matplotlib.pyplot as plt, openpyxl
 
 #import excel file into a dataframe
-df_raw = pd.read_excel(r"C:\Users\65906\OneDrive - Institute of Technical Education\qf2204a\elective\project\Project_File.xlsx")
+df_raw = pd.read_excel('./Project_File.xlsx')
 
 # copy the raw data into a separate variable that will be cleaned
 df = df_raw
@@ -101,4 +99,4 @@ class TestStringMethods(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-#hi mr khiew
+#hi there yes
